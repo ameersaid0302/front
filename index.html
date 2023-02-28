@@ -12,7 +12,7 @@
             function submit_question(){
                 const Ans_value = document.querySelector('.question_input').value;
                 //send to server
-                fetch('http://localhost:3000/answers', { 
+                fetch('https://qanda-6l91.onrender.com/answers', { 
                     method:'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@
             }
 
             async function Loadanswers(){
-                const res = await fetch('http://localhost:3000/answers');
+                const res = await fetch('https://qanda-6l91.onrender.com/answers');
                 const answers = await res.json();
 
                 const ctr = document.querySelector('.container'); 
