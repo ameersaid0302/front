@@ -1,0 +1,199 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Welcome To #1 Free Education Hub On Planet</h1>
+        <h4>Get A Free Video Answer For Your Question</h4>
+        <input class="question_input" type="text" placeholder="paste YouTube url" />
+        <button class="button" type="submit" onclick="submit_question()">submit</button>        
+        <div class="container"></div>
+        <script>
+            function submit_question(){
+                const Ans_value = document.querySelector('.question_input').value;
+                //send to server
+                fetch('http://localhost:3000/answers', { 
+                    method:'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({Ans_value})
+                })
+            }
+            function newEl(type, attrs={}){
+                const el = document.createElement(type);
+                for (let attr in attrs ){
+                    const value = attrs[attr];
+
+                    if (attr == 'innerText') el.innerText= value;
+                    else el.setAttribute(attr, value);
+                }
+                return el;
+            } 
+            function clearAll(){
+                const thecontent= document.querySelector('.container')
+                thecontent.innerHTML = '';
+
+            }
+
+            async function Loadanswers(){
+                const res = await fetch('http://localhost:3000/answers');
+                const answers = await res.json();
+
+                const ctr = document.querySelector('.container'); 
+                
+                
+                answers.forEach(answer => {
+                    
+                    const card = newEl('div', {class: 'card'});
+                    const card1=newEl('div',{class:'card1'});
+                    const searchresults_quant = newEl('h4',{innerText: answer.searchresults_quant});
+                    const searchresultsq_title = newEl('h4', {innerText: answer.searchresultsq_title}); //const img = newEl('img', {src: answer.img});
+                    
+                    const searchresultsq1 = newEl('h4', {innerText: answer.searchresultsq1});  
+                    const video = newEl('video', {width: '400', controls: ''});
+                    const source = newEl('source', {src: answer.Q_url1, type: 'video/mp4'});
+                    //const source = newEl('source', {src: answer.Q_url1, type: 'video/mp4'}); Do not change it this is resorved in javascript if you changed it you will not got the output
+                    video.appendChild(source);  
+                    
+                    const searchresultsq2 = newEl('h4', {innerText: answer.searchresultsq2});  
+                    const video1 = newEl('video', {width: '400', controls: ''});
+                    const source1 = newEl('source', {src: answer.Q_url2, type: 'video/mp4'});
+                    video1.appendChild(source1);
+
+                    const searchresultsq3 = newEl('h4', {innerText: answer.searchresultsq3});  
+                    const video2 = newEl('video', {width: '400', controls: ''});
+                    const source2 = newEl('source', {src: answer.Q_url3, type: 'video/mp4'});
+                    video2.appendChild(source2);
+                    
+                    const searchresultsq4 = newEl('h4', {innerText: answer.searchresultsq4});  
+                    const video3 = newEl('video', {width: '400', controls: ''});
+                    const source3 = newEl('source', {src: answer.Q_url4, type: 'video/mp4'});
+                    video3.appendChild(source3);
+ 
+
+                    const searchresultsq5 = newEl('h4', {innerText: answer.searchresultsq5});  
+                    const video4 = newEl('video', {width: '400', controls: ''});
+                    const source4 = newEl('source', {src: answer.Q_url5, type: 'video/mp4'});
+                    video4.appendChild(source4);
+  
+
+                    const searchresultsq6 = newEl('h4', {innerText: answer.searchresultsq6});  
+                    const video5 = newEl('video', {width: '400', controls: ''});
+                    const source5 = newEl('source', {src: answer.Q_url6, type: 'video/mp4'});
+                    video5.appendChild(source5);
+ 
+                    const searchresultsq7 = newEl('h4', {innerText: answer.searchresultsq7});  
+                    const video6 = newEl('video', {width: '400', controls: ''});
+                    const source6 = newEl('source', {src: answer.Q_url7, type: 'video/mp4'});
+                    video6.appendChild(source6);
+       
+
+                    const searchresultsq8 = newEl('h4', {innerText: answer.searchresultsq8});  
+                    const video7 = newEl('video', {width: '400', controls: ''});
+                    const source7 = newEl('source', {src: answer.Q_url8, type: 'video/mp4'});
+                    video7.appendChild(source7);
+         
+
+                    const searchresultsq9 = newEl('h4', {innerText: answer.searchresultsq9});  
+                    const video8 = newEl('video', {width: '400', controls: ''});
+                    const source8 = newEl('source', {src: answer.Q_url9, type: 'video/mp4'});
+                    video8.appendChild(source8);
+      
+
+                    const searchresultsq10 = newEl('h4', {innerText: answer.searchresultsq10});  
+                    const video9 = newEl('video', {width: '400', controls: ''});
+                    const source9 = newEl('source', {src: answer.Q_url10, type: 'video/mp4'});
+                    video9.appendChild(source9);
+           
+
+                    const searchresultsq11 = newEl('h4', {innerText: answer.searchresultsq11});  
+                    const video10 = newEl('video', {width: '400', controls: ''});
+                    const source10 = newEl('source', {src: answer.Q_url11, type: 'video/mp4'});
+                    video10.appendChild(source10);
+          
+
+                    //const Q_url1 = newEl('img', {src: answer.Q_url1});
+                    //Q_url1.style.width = '500px';
+                    clearAll();
+                    card1.appendChild(searchresults_quant);
+                    card1.appendChild(searchresultsq_title);
+                    card.appendChild(searchresultsq1);
+                    card.appendChild(video);
+                    card.appendChild(searchresultsq2);
+                    card.appendChild(video1);
+                    card.appendChild(searchresultsq3);
+                    card.appendChild(video2);
+                    
+                    card.appendChild(searchresultsq4);
+                    card.appendChild(video3);
+                    card.appendChild(searchresultsq5);
+                    card.appendChild(video4);
+                    card.appendChild(searchresultsq6);
+                    card.appendChild(video5);
+                    card.appendChild(searchresultsq7);
+                    card.appendChild(video6);
+                    card.appendChild(searchresultsq8);
+                    card.appendChild(video7);
+                    card.appendChild(searchresultsq9);
+                    card.appendChild(video8);
+                    card.appendChild(searchresultsq10);
+                    card.appendChild(video9);
+                    card.appendChild(searchresultsq11);
+                    card.appendChild(video10);
+                    
+
+
+                    //const a = document.querySelector('a');                                                                                                        
+
+
+                    ctr.appendChild(card1);
+                    ctr.appendChild(card);
+                })  
+            }    
+            Loadanswers();
+        
+        </script>
+        <style>
+
+            .button{
+                float: left;
+                width: 20%;
+                padding: 10px;
+                background: #2196F3;
+                color: white;
+                font-size: 17px;
+                border: 1px solid grey;
+                border-left: none; /* Prevent double borders */
+                cursor: pointer;
+            }
+            .question_input{
+                display: block;
+                padding: 10px;
+                font-size: 17px;
+                border: 1px solid grey;
+                float: left;
+                width: 80%;
+                background: #f1f1f1;
+                
+            }
+            .container{
+               display: table-caption;
+            }
+            .card1{
+                display: flex;
+                flex-direction: row;
+            }
+            .card{
+                margin: 10px;
+                padding: 16px 16px;
+                background-color: rgb(191, 191, 245);
+                box-shadow: 0 4px 8px 0 rgba(231, 10, 10, 0.2);
+                transition: 0.3s;
+                width: 93%;
+                height: 20%;
+            }
+        </style>
+
+    </body>
+</html>
